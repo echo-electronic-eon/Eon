@@ -95,9 +95,9 @@ def main():
             print(f"Accelerometer: {accel_data}")
             print(f"Gyroscope: {gyro_data}")
             if mag_data['x'] is not None:
-                print(f"Magnetometer: {mag_data}")
+                print(f"Compass: {mag_data}")
             else:
-                print("Magnetometer: Данные не готовы или ошибка чтения")
+                print("Compass: Данные не готовы или ошибка чтения")
 
             time.sleep(1)
     except KeyboardInterrupt:
