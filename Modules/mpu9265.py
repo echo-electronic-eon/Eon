@@ -10,7 +10,7 @@ PWR_MGMT_1 = 0x6B
 ACCEL_XOUT_H = 0x3B
 GYRO_XOUT_H = 0x43
 
-# Регистры магнетометра AK8963
+# Регистры компаса
 MAG_CNTL1 = 0x0A
 MAG_ST1 = 0x02
 MAG_XOUT_L = 0x03
@@ -64,12 +64,12 @@ def get_mag_data():
                 return {'x': x, 'y': y, 'z': z}
         return {'x': None, 'y': None, 'z': None}
     except Exception as e:
-        print(f"Ошибка при чтении магнитометра: {e}")
+        print(f"Ошибка при чтении компаса: {e}")
         return {'x': None, 'y': None, 'z': None}
 
 def init_mag():
     try:
-        # Сброс магнитометра
+        # Сброс компаса
         bus.write_byte_data(MAG_ADDRESS, MAG_CNTL1, 0x01)
         time.sleep(0.1)  # Ждем завершения сброса
 
@@ -77,7 +77,7 @@ def init_mag():
         bus.write_byte_data(MAG_ADDRESS, MAG_CNTL1, 0x16)
         time.sleep(0.1)  # Ждем завершения настройки
     except Exception as e:
-        print(f"Ошибка при инициализации магнитометра: {e}")
+        print(f"Ошибка при инициализации компаса: {e}")
 
 def main():
     try:
